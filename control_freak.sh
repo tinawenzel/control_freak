@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# declare type_id=("scikit-learn" "xgboost" "lightgbm" "h2o" "catboost")
 declare -a sklearn=("0.10" "0.11" "0.12" "0.12.1" "0.13" "0.13.1" "0.14" "0.14.1" "0.15.0b1" "0.15.0b2" "0.15.0" "0.15.1" "0.15.2" "0.16b1" "0.16.0" "0.16.1" "0.17b1" "0.17" "0.17.1" "0.18" "0.18.1" "0.18.2" "0.19b2" "0.19.0" "0.19.1")
 declare -a xgboost=("0.4a12" "0.4a13" "0.4a14" "0.4a15" "0.4a18" "0.4a19" "0.4a20" "0.4a21" "0.4a22" "0.4a23" "0.4a24" "0.4a25" "0.4a26" "0.4a27" "0.4a28" "0.4a29" "0.4a30" "0.6a1" "0.6a2" "0.7.post3" "0.7.post4")
 declare -a lightgbm=("2.0.2" "2.0.3" "2.0.4" "2.0.5" "2.0.6" "2.0.7" "2.0.10" "2.0.11" "2.0.12" "2.1.0")
@@ -10,17 +9,6 @@ declare -a catboost=("0.1.1" "0.1.1.2" "0.1.1.3" "0.1.1.5" "0.1.1.6" "0.1.1.7" "
 
 # echo "library,version,f1_score,timeit" > results_reg.txt
 echo "library,version,f1_score,timeit" > results_clf.txt
-
-# for type in "${type_id[@]}"
-# 	do
-# 		for v in "${type[@]}"
-# 		do
-# 		   echo "$v"
-# 		   pip install type=="$v"
-# 		   python run_models.py type
-# 		   y | pip uninstall type=="$v"
-# 		done
-# done
 
 for v in "${xgboost[@]}"
 do
