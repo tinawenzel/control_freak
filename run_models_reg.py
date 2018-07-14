@@ -84,7 +84,7 @@ if type_id=='catboost':
 	from catboost import CatBoostRegressor
 	model = CatBoostRegressor()
 	start = time()
-	model.fit(X_train[feature_cols], X_train)
+	model.fit(X_train[feature_cols], y_train)
 	end = time()
 	y_pred = model.predict(X_valid[feature_cols])
 	score = mean_absolute_error(y_valid, y_pred)

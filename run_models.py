@@ -92,7 +92,7 @@ if type_id=='catboost':
 	from catboost import CatBoostClassifier
 	model = CatBoostClassifier()
 	start = time()
-	model.fit(X_train[feature_cols], X_train)
+	model.fit(X_train[feature_cols], y_train)
 	end = time()
 	y_pred = model.predict(X_valid[feature_cols])
 	score = f1_score(y_valid, y_pred)
