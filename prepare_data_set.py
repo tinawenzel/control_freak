@@ -25,8 +25,8 @@ def generate_classification_data(na_fraction=None):
     if na_fraction is not None:
         validate_na_fraction(input=na_fraction)
 
-    print('Generating classification data...')
-    data = make_classification(n_samples=1000,
+    print('Generating classification data... with na_fraction={}.'.format(na_fraction))
+    data = make_classification(n_samples=5000,
                                n_features=100,
                                n_informative=20,
                                n_redundant=2,
@@ -56,6 +56,7 @@ def generate_classification_data(na_fraction=None):
     print('Saving training test to file ...')
     if na_fraction is not None:
         X_train = X_train.mask(np.random.random(X_train.shape) < na_fraction)
+        X_valid = X_valid.mask(np.random.random(X_valid.shape) < na_fraction)
 
     X_train.join(y_train).to_csv('data/X_train_clf.csv', index=False)
     X_valid.join(y_valid).to_csv('data/X_valid_clf.csv', index=False)
@@ -70,8 +71,8 @@ def generate_regression_data(na_fraction=None):
     if na_fraction is not None:
         validate_na_fraction(input=na_fraction)
 
-    print('Generating regression data...')
-    data = make_regression(n_samples=1000,
+    print('Generating regression data... with na_fraction={}.'.format(na_fraction))
+    data = make_regression(n_samples=5000,
                            n_features=100,
                            n_informative=20,
                            n_targets=1,
@@ -97,6 +98,7 @@ def generate_regression_data(na_fraction=None):
     print('Saving training test to file ...')
     if na_fraction is not None:
         X_train = X_train.mask(np.random.random(X_train.shape) < na_fraction)
+        X_valid = X_valid.mask(np.random.random(X_valid.shape) < na_fraction)
 
     X_train.join(y_train).to_csv('data/X_train_reg.csv', index=False)
     X_valid.join(y_valid).to_csv('data/X_valid_reg.csv', index=False)
@@ -104,6 +106,6 @@ def generate_regression_data(na_fraction=None):
 
 if __name__ == '__main__':
     pathlib.Path('./data').mkdir(parents=True, exist_ok=True)
-    generate_classification_data()
-    generate_regression_data()
+    generate_classification_data(na_fraction=None)
+    generate_regression_data(na_fraction=None)
 
